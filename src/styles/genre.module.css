@@ -1,7 +1,8 @@
 .container {
   display: flex;
+
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .right {
@@ -60,4 +61,13 @@
 .remove {
   cursor: pointer;
   color: grey;
+}
+
+@media screen and (max-width: 768px) {
+  .right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container {
+    flex-direction: column;
+  }
 }
