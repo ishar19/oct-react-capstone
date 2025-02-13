@@ -1,6 +1,7 @@
-import React from 'react'
+
 import styles from "../styles/genre.module.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const CARDS = [{
     id: 1,
     title: "Action",
@@ -48,12 +49,21 @@ const CARDS = [{
     bg: "#72db73"
 }]
 const Genre = () => {
+    const navigate = useNavigate();
     const [selected, setSelected] = useState([]);
     const handleSelect = (card) => {
         if (selected.includes(card)) {
             setSelected(selected.filter((item) => item.id !== card.id));
         } else {
             setSelected([...selected, card]);
+        }
+    }
+    const handleNext = () => {
+        if (selected.length >= 3) {
+            localStorage.setItem("selectedMovies", JSON.stringify(selected));
+            navigate("/widgets")
+        } else {
+            alert("Please select at least 3 categories");
         }
     }
     return (
@@ -73,6 +83,7 @@ const Genre = () => {
                     </div>
                 ))}
             </div>
+            <button onClick={handleNext}>Next</button>
         </div>
     )
 }

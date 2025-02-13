@@ -4,3 +4,14 @@
   grid-template-columns: 2fr 1fr;
   gap: 1rem;
 }
+
+.focus {
+  grid-row: "1";
+  height: "60vh";
+  border-radius: "2rem";
+  padding: "2rem";
+  background-color: aliceblue;
+}
+.focus:focus {
+  background-color: rebeccapurple;
+}
